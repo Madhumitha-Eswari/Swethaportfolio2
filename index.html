@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Swetha Annadurai | Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+      background: #0b1c2c;
+      color: #fff;
+    }
+    .navbar {
+      background: #0b1c2c;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .navbar-brand, .nav-link {
+      color: #fff !important;
+      transition: color 0.3s ease;
+    }
+    .nav-link:hover {
+      color: #ffcd39 !important;
+    }
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 5%;
+      background: url('DA with DM img.jpg') no-repeat center center/cover;
+      position: relative;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(11,28,44,0.8);
+    }
+    .hero .content-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1200px;
+      gap: 40px;
+      flex-wrap: nowrap;
+      position: relative;
+      z-index: 2;
+    }
+    .hero .text-content {
+      flex: 1;
+    }
+    .hero .text-content h2 {
+      font-size: 1.4rem;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+    .hero .text-content h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin: 0;
+    }
+    .hero .text-content h1 span {
+      color: #ffcd39;
+    }
+    .hero .text-content h3 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+    .hero .btn-primary {
+      background-color: #ffcd39;
+      border: none;
+      color: #000;
+      font-weight: 600;
+      padding: 10px 25px;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+    }
+    .hero .btn-primary:hover {
+      background-color: #ffc107;
+    }
+    .hero img.profile-photo {
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 6px solid transparent;
+      background: linear-gradient(135deg, #00f2fe, #4facfe, #ff6ec4) border-box;
+      box-shadow: 0px 0px 35px rgba(0, 242, 254, 0.8), 0px 0px 35px rgba(255, 110, 196, 0.8);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .hero img.profile-photo:hover {
+      transform: scale(1.05);
+      box-shadow: 0px 0px 45px rgba(0, 242, 254, 1), 0px 0px 45px rgba(255, 110, 196, 1);
+    }
+    .social-links {
+  display: flex;          /* horizontal layout */
+  gap: 15px;              /* space between icons */
+  margin-top: 20px;
+}
+
+.social-links a {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #ffcd39;
+  color: #ffcd39;
+  border-radius: 50%;
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect: background color, scale, and shadow */
+.social-links a:hover {
+  background-color: #ffcd39;
+  color: #000;
+  transform: scale(1.2);
+  box-shadow: 0 4px 15px rgba(255, 205, 57, 0.6);
+}
+
+
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 25px;
+      text-align: center;
+      color: #0d6efd;
+    }
+    .list-group-item, .card {
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .list-group-item:hover, .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    }
+    .progress {
+      height: 10px;
+      border-radius: 20px;
+    }
+    section {
+      transition: all 0.8s ease;
+    }
+    #skills { background: #132742; color: #fff; }
+    #experience { background: #162b4d; color: #fff; }
+    #projects { background: #1a3359; color: #fff; }
+    #contact { background: #1d3c66; color: #fff; }
+    .footer {
+      background: #0b1c2c;
+      color: #fff;
+      text-align: center;
+      padding: 15px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s ease;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .about-photo {
+  width: 280px;   /* square size */
+  height: 280px;  /* equal height */
+  object-fit: cover;  /* keeps proportion without stretching */
+  border-radius: 0;   /* removes round border */
+  box-shadow: none;   /* clean look, no shadow */
+}
+.progress-bar {
+  width: 0; /* Start at 0% */
+  transition: width 2s ease-in-out; /* Smooth animation */
+}
+
+
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Swetha Annadurai</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="content-box">
+      <div class="text-content">
+        <h2>Hello, It's Me</h2>
+        <h1><span>Swetha Annadurai</span></h1>
+        <h3>And I'm a Data Analytics with Digital Marketing & Content Management Professional</h3>
+        <p>I'm passionate about social media marketing, campaign optimization, and delivering impactful content strategies to boost engagement and growth.</p>
+        <div class="social-links mt-4">
+          <a href="mailto:swethaannadurai07@gmail.com"><i class="fas fa-envelope"></i></a>
+          <a href="https://linkedin.com/in/swetha-annadurai-67a029231" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        </div>
+      </div>
+      <div class="image-container">
+        <img src="Swetha.jpg" alt="Profile Photo" class="profile-photo">
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <!-- About -->
+<section id="about" class="py-5 container reveal">
+  <h2 class="section-title">About Me</h2>
+  <div class="row align-items-center">
+    <!-- Profile Picture Left -->
+    <div class="col-md-4 text-center mb-4 mb-md-0">
+      <img src="Swetha2.jpg" alt="Profile Photo" class="about-photo">
+    </div>
+    <!-- About Text Right -->
+    <div class="col-md-8">
+      <p>
+        Detail-oriented and digitally fluent marketing and admin professional with hands-on experience in social media content management, lead tracking, and campaign coordination. Skilled in updating and structuring content, maintaining brand consistency, and supporting technical and creative teams. Strong understanding of UX principles, CMS systems, and content optimisation for user engagement. Actively seeking a role in digital content management or editing, combining marketing insights with structured content delivery.
+<br><br>
+ With a growing expertise in data analytics, I bring the ability to interpret campaign metrics, extract insights, and support data-driven decision-making for improved engagement and performance. My combined background in digital marketing and content management enables me to bridge creative strategy with analytical precision, ensuring impactful and measurable results.
+      </p>
+    </div>
+  </div>
+</section>
+
+  <!-- Skills -->
+  <!-- Skills -->
+<section id="skills" class="py-5 reveal">
+  <div class="container">
+    <h2 class="section-title">Skills</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <p>Content Management Systems - 80%</p>
+        <div class="progress mb-3">
+          <div class="progress-bar" data-percentage="80"></div>
+        </div>
+        <p>Data Analysis & Excel - 85%</p>
+        <div class="progress mb-3">
+          <div class="progress-bar bg-success" data-percentage="85"></div>
+        </div>
+        <p>Digital Content Scheduling - 90%</p>
+        <div class="progress mb-3">
+          <div class="progress-bar bg-info" data-percentage="90"></div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <p>Social Media Marketing - 85%</p>
+        <div class="progress mb-3">
+          <div class="progress-bar bg-warning" data-percentage="85"></div>
+        </div>
+        <p>Campaign Tracking & ROI Reporting - 80%</p>
+        <div class="progress mb-3">
+          <div class="progress-bar bg-danger" data-percentage="80"></div>
+        </div>
+        <p>Basic UX Understanding - 70%</p>
+        <div class="progress mb-3">
+          <div class="progress-bar bg-secondary" data-percentage="70"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Experience -->
+  <section id="experience" class="py-5 reveal">
+    <div class="container">
+      <h2 class="section-title">Experience</h2>
+      <ul class="list-group">
+        <li class="list-group-item bg-dark text-white">
+          <h5>D-Media (Dec 2022 – Apr 2023)</h5>
+          <p>Sales and Data Support Assistant – Tracked leads, prepared daily sales reports in Excel, assisted in campaign setup, and learned about product lifecycle to ensure client-focused content delivery.</p>
+        </li>
+        <li class="list-group-item bg-dark text-white">
+          <h5>Centuria Academy (May 2023 – Nov 2023)</h5>
+          <p>Social Media Specialist & Admin – Managed and published educational content across Instagram, Facebook, and YouTube, coordinated updates with academic teams, scheduled posts aligned with marketing goals, and increased engagement and student inquiries.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="py-5 reveal">
+    <div class="container">
+      <h2 class="section-title">Projects</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card mb-4 shadow-sm bg-dark text-white">
+            <div class="card-body">
+              <h5 class="card-title"><i class="fas fa-leaf me-2"></i>Gen Z & Sustainable Fashion</h5>
+              <p class="card-text">Conducted an in-depth study on how Gen Z balances affordability with sustainability in fashion choices. Analyzed Patagonia’s content strategy, branding approach, and ethical positioning to understand consumer behavior and brand engagement patterns.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card mb-4 shadow-sm bg-dark text-white">
+            <div class="card-body">
+              <h5 class="card-title"><i class="fas fa-graduation-cap me-2"></i>Educational Lead Generation</h5>
+              <p class="card-text">Designed and executed an Instagram-based lead generation campaign for an educational institution. Implemented structured content planning, tracked performance metrics, and achieved measurable improvements in engagement, inquiries, and conversions.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-5 reveal">
+    <div class="container">
+      <h2 class="section-title">Contact</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <p><strong>Email:</strong> <a href="mailto:swethaannadurai07@gmail.com" class="text-white">swethaannadurai07@gmail.com</a></p>
+          <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/swetha-annadurai-67a029231" target="_blank" class="text-white">linkedin.com/in/swetha-annadurai</a></p>
+          <p><strong>Instagram:</strong> @yourprofile</p>
+          <p><strong>Facebook:</strong> @yourprofile</p>
+        </div>
+        <div class="col-md-6">
+          <form>
+            <div class="mb-3">
+              <input type="text" class="form-control" placeholder="Your Name" required>
+            </div>
+            <div class="mb-3">
+              <input type="email" class="form-control" placeholder="Your Email" required>
+            </div>
+            <div class="mb-3">
+              <textarea class="form-control" rows="4" placeholder="Your Message" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2025 Swetha Annadurai | Portfolio</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Reveal on scroll with transition
+    function revealOnScroll() {
+      var reveals = document.querySelectorAll(".reveal");
+      for (var i = 0; i < reveals.length; i++) {
+        var windowHeight = window.innerHeight;
+        var elementTop = reveals[i].getBoundingClientRect().top;
+        var elementVisible = 150;
+        if (elementTop < windowHeight - elementVisible) {
+          reveals[i].classList.add("active");
+        } else {
+          reveals[i].classList.remove("active");
+        }
+      }
+    }
+    window.addEventListener("scroll", revealOnScroll);
+    revealOnScroll();
+
+  // Animate progress bars when skills section is visible
+  document.addEventListener("DOMContentLoaded", () => {
+    const skillsSection = document.querySelector("#skills");
+    const progressBars = document.querySelectorAll(".progress-bar");
+
+    // Reset bars to 0 width
+    function resetBars() {
+      progressBars.forEach(bar => {
+        bar.style.width = "0";
+      });
+    }
+
+    // Animate bars to their percentage
+    function animateBars() {
+      progressBars.forEach(bar => {
+        const percentage = bar.getAttribute("data-percentage");
+        bar.style.width = percentage + "%";
+      });
+    }
+
+    const options = {
+      threshold: 0.4 // Trigger when 40% of section is visible
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          resetBars();       // Reset first
+          setTimeout(animateBars, 200); // Then animate
+        } else {
+          resetBars(); // Reset when you scroll out, so it can re-animate later
+        }
+      });
+    }, options);
+
+    observer.observe(skillsSection);
+  });
+</script>
+
+</body>
+</html>
